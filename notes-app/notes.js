@@ -54,6 +54,10 @@ const saveNotes = (notes) => {
 
 const loadNotes = () => {
     try {
+        // The readFileSync method returns a Buffer object if no encoding is specified.
+        // A Buffer is a raw binary data format in Node.js.
+        // The toString() method is called on this Buffer to convert it into a string.
+        // By default, toString() converts the buffer to a UTF-8 encoded string, which is what you typically want when reading a text file like a JSON file.
         return JSON.parse(fs.readFileSync('notes.json').toString());
     } catch (e) {
         return [];

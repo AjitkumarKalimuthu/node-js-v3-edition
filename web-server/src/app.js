@@ -83,3 +83,32 @@ app.listen(3000, () => {
 });
 
 // nodemon src/app.js -e js,hbs // to run other extensions like hbs
+
+
+
+// Summary of Key Methods
+// Method	    Purpose
+// app.use	    Mounts middleware or serves static files.
+// app.set	    Assigns settings (e.g., view engine, views directory, env).
+// app.get	    Handles GET requests or retrieves settings.
+// app.post	    Handles POST requests.
+// app.put	    Handles PUT requests.
+// app.delete	Handles DELETE requests.
+// app.listen	Starts the server and listens for connections.
+// app.render	Renders a view template.
+// app.param	Adds callback triggers for route parameters.
+// app.route	Creates chainable route handlers for a specific path.
+
+
+// express.json(): Parses incoming requests with JSON payloads.
+// express.urlencoded(): Parses incoming requests with URL-encoded payloads.
+// express.static(): Serves static files.
+
+// Key Differences Between express.json() and express.urlencoded()
+// Feature	        express.json()	        express.urlencoded()
+// Purpose	        Parses JSON payloads.	Parses URL-encoded payloads (e.g., forms).
+// Content-Type	application/json	    application/x-www-form-urlencoded
+// Data            Format	JSON string ({"name": "John"})	URL-encoded string (name=John&age=30)
+// Output	        JavaScript object (req.body)	JavaScript object (req.body)
+// Nested Data Support	Yes (JSON supports nested objects/arrays)	Yes (if extended: true)
+// Library Used	Built-in JSON parser	qs (if extended: true) or querystring

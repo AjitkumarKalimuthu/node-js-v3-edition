@@ -152,3 +152,10 @@ const connectToDb = async () => {
   }
   
   connectToDb();
+
+
+  // const cursor = db.collection('users').find().limit(10);
+  // const cursor = db.collection('users').find().skip(5);
+  // const cursor = db.collection('users').find().sort({ age: 1 });
+  // const count = await db.collection('users').find({ age: { $gt: 25 } }).count();
+  // const documents = await cursor.toArray();

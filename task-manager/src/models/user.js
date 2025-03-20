@@ -76,6 +76,9 @@ userSchema.methods.toJSON = function () {
     return userObject;
 }
 
+// Instance methods are functions that operate on a specific document (instance) of a model
+// They are defined on the schema using schema.methods.
+// Inside these methods, this refers to the document instance.
 // If we have to add function to instance then we need to use methods in schema
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
@@ -129,3 +132,42 @@ userSchema.pre('deleteOne', { document: true, query: false }, async function (ne
 // const CollectionModel = mongoose.model('Collection name', Collection Schema);
 const User = mongoose.model('User', userSchema);
 module.exports = User;
+
+
+
+// Summary of Hooks
+// Hook Type	Hook Name	Description
+// Document	    validate	Runs before a document is validated.
+//              save	    Runs before or after a document is saved.
+//              remove	    Runs before or after a document is removed.
+//              updateOne	Runs before or after a document is updated using updateOne.
+//              init	    Runs when a document is initialized.
+// Query	    find	    Runs before or after a find query is executed.
+//              findOne	    Runs before or after a findOne query is executed.
+//              deleteOne	Runs before or after a deleteOne query is executed.
+//              updateOne	Runs before or after an updateOne query is executed.
+//              aggregate	Runs before or after an aggregation query is executed.
+
+
+// Common Use Cases for Hooks
+// Validation:
+// Use pre('validate') to enforce custom validation rules.
+
+// Data Transformation:
+// Use pre('save') to modify data before saving (e.g., hashing passwords).
+
+// Logging:
+// Use post('save') or post('remove') to log actions.
+
+// Cleanup:
+// Use pre('remove') to delete related documents or data.
+
+// Query Modification:
+// Use pre('find') or pre('findOne') to modify query conditions.
+
+
+// Key Differences
+// Context	        this Refers To	            Example Use Case
+// Document Hooks	The document instance.	    Access/modify document properties.
+// Query Hooks	    The query object.	        Modify the query (e.g., add filters).
+// Static Methods	The model (Mongoose class).	Call model methods (e.g., findOne).
